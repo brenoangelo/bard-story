@@ -16,7 +16,7 @@ export function App() {
       )}
       <Page currentPage={page} setPage={setPage} />
 
-      {page === 6 && (
+      {page === 5 && (
         <div className="relativ px-5 h-[100dvh] w-[100dvw] flex flex-col gap-8 justify-center items-center bg-end-bg bg-no-repeat bg-center bg-cover">
           <div className="h-[100dvh] w-[100dvw] bg-gradient-to-r opacity-45 from-zinc-800 to-zinc-300 absolute"></div>
           <h1 className="text-zinc-50 text-lg z-10">
@@ -26,11 +26,11 @@ export function App() {
           <h1 className="text-zinc-50 z-10">
             "Parabéns Ana Julia, faça bom proveito desse presente. Dê um abraço e um beijo no Breno, pois foi ele quem me chamou."
           </h1>
-          <Button onClick={() => setPage(prevState => prevState + 1)}>Continuar</Button>
+          <Button onClick={() => setPage(prevState => prevState + 1)}>Revelar presente</Button>
         </div>
       )}
 
-      {page === 7 && (
+      {page === 6 && (
         <div className="relative h-[100dvh] w-[100dvw] flex flex-col gap-8 justify-center items-center bg-end-bg bg-no-repeat bg-center bg-cover">
           <div className="h-[100dvh] w-[100dvw] bg-gradient-to-r opacity-45 from-zinc-800 to-zinc-300 absolute"></div>
           <div className="z-10 text-center">

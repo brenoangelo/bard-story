@@ -44,37 +44,30 @@ export function Page({ currentPage, setPage }: PageProps) {
         placeholder: 'Digite aqui o item encontrado...'
       },
       buttonText: 'Continuar'
-    },
-    5: {
-      textOne: '(Bardo emite sons mais fortes com sua trombeta e sai voando em direção ao quarto da bagunça)',
-      textTwo: 'Parece que ele está querendo entregar algo a você',
-      status: 'visible',
-      input: {
-        type: 'text',
-        name: 'item',
-        placeholder: 'Digite aqui o item encontrado...'
-      },
-      buttonText: 'Continuar'
     }
   }[currentPage]
 
   if (!pageInfo) return <></>
 
   return (
-    <div className="flex flex-col justify-center h-[100dvh] items-center relative gap-8 px-12 overflow-hidden">
+    <div className="flex flex-col text-zinc-600 justify-center h-[100dvh] items-center relative gap-8 px-12 overflow-hidden">
       <p>{pageInfo?.textOne}</p>
       <p>{pageInfo?.textTwo}</p>
       {pageInfo?.input &&
         (pageInfo.input.type === 'text' ? (
-          <input type='text' className="z-10" name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
+          <div className="bg-gradient-to-b w-full inline-flex relative from-amber-200 to-yellow-800 p-1 z-10">
+            <input type='text' className="z-10 h-10 bg-zinc-50 w-full px-3 outline-0" name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
+          </div>
         ) : (
-          <select className="z-10">
-            <option value="">Selecione</option>
-            <option value="majulas">majulas</option>
-            <option value="ww">asdqwe</option>
-            <option value="ee">Seleciasdasone</option>
-            <option value="zz">asdasqe</option>
-          </select>
+          <div className="bg-gradient-to-b w-full inline-flex relative from-amber-200 to-yellow-800 p-1 z-10">
+            <select className="z-10 bg-zinc-50 w-full h-10 px-3">
+              <option value="">Selecione</option>
+              <option value="majulas">majulas</option>
+              <option value="ww">asdqwe</option>
+              <option value="ee">Seleciasdasone</option>
+              <option value="zz">asdasqe</option>
+            </select>
+          </div>
         ))}
       <Button onClick={() => setPage(prevState => prevState + 1)}>{pageInfo?.buttonText}</Button>
 
