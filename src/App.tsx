@@ -1,12 +1,20 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Page } from "./Page"
 import { Button } from "./Button"
 
 export function App() {
+  const audioRef = useRef<HTMLAudioElement>(null)
   const [page, setPage] = useState(0)
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
+  }, [audioRef])
 
   return (
     <div className="bg-zinc-100 h-[100dvh] w-[100dvw] flex justify-center items-center">
+      <audio ref={audioRef} src="/bard-music.mp3" autoPlay></audio>
       {page === 0 && (
         <div className="relative px-5 h-[100dvh] w-[100dvw] flex flex-col gap-8 justify-center items-center bg-start-bg bg-no-repeat bg-center bg-cover">
           <div className="h-[100dvh] w-[100dvw] bg-gradient-to-r opacity-45 from-zinc-800 to-zinc-300 absolute"></div>
