@@ -66,9 +66,9 @@ export function Page({ currentPage, setPage }: PageProps) {
       <p>{pageInfo?.textTwo}</p>
       {pageInfo?.input &&
         (pageInfo.input.type === 'text' ? (
-          <input type='text' name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
+          <input type='text' className="z-10" name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
         ) : (
-          <select>
+          <select className="z-10">
             <option value="">Selecione</option>
             <option value="majulas">majulas</option>
             <option value="ww">asdqwe</option>
