@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Button } from "./Button"
 
 interface PageProps {
@@ -6,6 +7,8 @@ interface PageProps {
 }
 
 export function Page({ currentPage, setPage }: PageProps) {
+  const [answer, setAnswer] = useState('')
+
   const pageInfo = {
     1: {
       textOne: 'Então um ser misterioso surge tocando sua trombeta...',
@@ -47,6 +50,22 @@ export function Page({ currentPage, setPage }: PageProps) {
     }
   }[currentPage]
 
+  function nextPage() {
+    const test = {
+      2: 'Bardo',
+      3: 'all',
+      4: 'Eu te amo'
+    }[currentPage]
+
+    if (test && (answer)?.toLowerCase() !== test?.toLowerCase()) {
+      alert('Resposta incorreta!')
+
+      return;
+    }
+
+    setPage(prevState => prevState + 1)
+  }
+
   if (!pageInfo) return <></>
 
   return (
@@ -56,20 +75,20 @@ export function Page({ currentPage, setPage }: PageProps) {
       {pageInfo?.input &&
         (pageInfo.input.type === 'text' ? (
           <div className="bg-gradient-to-b w-full inline-flex relative from-amber-200 to-yellow-800 p-1 z-10">
-            <input type='text' className="z-10 h-10 bg-zinc-50 w-full px-3 outline-0" name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
+            <input type='text' onChange={(e) => setAnswer(e.target.value)} className="z-10 h-10 bg-zinc-50 w-full px-3 outline-0" name={pageInfo.input.name} placeholder={pageInfo.input.placeholder} id='' />
           </div>
         ) : (
           <div className="bg-gradient-to-b w-full inline-flex relative from-amber-200 to-yellow-800 p-1 z-10">
-            <select className="z-10 bg-zinc-50 w-full h-10 px-3">
+            <select className="z-10 bg-zinc-50 w-full h-10 px-3" onChange={(e) => setAnswer(e.target.value)}>
               <option value="">Selecione</option>
-              <option value="majulas">majulas</option>
-              <option value="ww">asdqwe</option>
-              <option value="ee">Seleciasdasone</option>
-              <option value="zz">asdasqe</option>
+              <option value="majulas">Que você é incrivel</option>
+              <option value="ww">Que você é muito bonita</option>
+              <option value="special">Que você é especial para o Breno</option>
+              <option value="all">Todas as opções</option>
             </select>
           </div>
         ))}
-      <Button onClick={() => setPage(prevState => prevState + 1)}>{pageInfo?.buttonText}</Button>
+      <Button onClick={nextPage}>{pageInfo?.buttonText}</Button>
 
       {pageInfo.status === 'hidden' ? <img src="/bard.png" className="absolute bottom-[-120px]" /> : <img src="/bard.png" className="absolute bottom-0" />}
     </div>
