@@ -23,4 +23,9 @@ export default tseslint.config({
       { allowConstantExport: true },
     ],
   },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended' // Make this the last element so prettier config overrides other formatting rules
+  ],
 })
